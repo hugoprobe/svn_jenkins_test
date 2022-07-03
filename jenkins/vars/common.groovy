@@ -19,9 +19,9 @@ def xcopy(String src, String dst, String flag="")
 }
 
 def methodA(){
-        bat  " echo Method AAAA is execute new"
+        bat  " echo Method AAAAB is execute new"
 }
 def methodB(){
-        bat  " echo Method BBB is execute"
+        bat  " echo Method BBBC is execute"
 }
 return this
