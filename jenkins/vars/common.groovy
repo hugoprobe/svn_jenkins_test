@@ -1,7 +1,14 @@
-def ELIGIBLE_NODES        = 'JOGBLD0021,JOGBLD0020,JOGBLD0010,JOGBLD0006'
+def ELIGIBLE_NODES        = ['JOGBLD0021','JOGBLD0020','JOGBLD0010','JOGBLD0006']
 def PUBLISH_DIRECTORIES   = [$/\\\\jogbld0001\\DEV_SHARED_FOLDER_8TB\\JOG_PROJECT\\Android\\DMK\\QA-Release/$,
                              $/\\\\gameloft.org\\jog\\DEV\\HD\\Project\\Android\\DMK\\QA-Release/$ ]
 
+def getEligibleNodes(){
+  return ELIGIBLE_NODES
+}
+
+def getPublishDirectories{  
+  return PUBLISH_DIRECTORIES
+}
 
 def makedir(String path) {
         if (!fileExists(path)) {                               
