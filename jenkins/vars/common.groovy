@@ -6,7 +6,7 @@ def getEligibleNodes(){
   return ELIGIBLE_NODES
 }
 
-def getPublishDirectories{  
+def getPublishDirectories(){  
   return PUBLISH_DIRECTORIES
 }
 
