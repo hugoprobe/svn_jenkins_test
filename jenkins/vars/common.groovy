@@ -3,11 +3,11 @@ PUBLISH_DIRECTORIES   = [$/\\\\jogbld0001\\DEV_SHARED_FOLDER_8TB\\JOG_PROJECT\\A
                              $/\\\\gameloft.org\\jog\\DEV\\HD\\Project\\Android\\DMK\\QA-Release/$ ]
 
 def getEligibleNodes(){
-  return ELIGIBLE_NODES
+  return this.ELIGIBLE_NODES
 }
 
 def getPublishDirectories(){  
-  return PUBLISH_DIRECTORIES
+  return this.PUBLISH_DIRECTORIES
 }
 
 def makedir(String path) {
