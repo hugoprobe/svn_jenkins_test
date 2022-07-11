@@ -1,3 +1,8 @@
+ELIGIBLE_NODES        ='JOGBLD0021,JOGBLD0020,JOGBLD0010,JOGBLD0006'
+PUBLISH_DIRECTORIES   =[$/\\\\jogbld0001\\DEV_SHARED_FOLDER_8TB\\JOG_PROJECT\\Android\\DMK\\QA-Release/$,
+                        $/\\\\gameloft.org\\jog\\DEV\\HD\\Project\\Android\\DMK\\QA-Release/$ ]
+
+
 def makedir(String path) {
         if (!fileExists(path)) {                               
                 bat 'mkdir "' + path +'"'                         
