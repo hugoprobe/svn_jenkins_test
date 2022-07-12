@@ -25,6 +25,54 @@ def deepmkdir(String path)
         makedir(path)
 }
 
+def IsNeedCheckoutSVN(svn_url, target_dir="%CD%"){
+    def isNeedCheckout=false, current_svn_url=""
+    def csvn = checkout svn_url
+    def CURRENT_SVN_URL_SCRIPT  = ''' @echo off  
+                                      pushd ''' + target_dir +'''  
+                                      call :fetch_svn_url
+                                      popd
+                                      goto :end
+                                      :fetch_svn_url
+                                        set "SVN_URL="
+                                        for /f %%i in ('svn info --show-item url') do set SVN_URL=%%i
+                                        echo %SVN_URL%
+										exit /b 0
+                                      :end
+                                  '''
+    try {
+        echo 'scm svn url : ' + csvn.SVN_URL
+        current_svn_url = bat(script:CURRENT_SVN_URL_SCRIPT, returnStdout:true)
+        current_svn_url = current_svn_url.trim()
+        isNeedCheckout  = (current_svn_url==csvn.SVN_URL)?false:true        
+    } catch (Exception e) {
+        isNeedCheckout  = true
+    }
+    return isNeedCheckout
+}
+
+def CheckoutSVN(svn_url, target_dir="%CD%"){
+  dir(target_dir){
+    withCredentials([usernamePassword(credentialsId: 'BUILD_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {    
+        checkout([$class: 'SubversionSCM', locations: [[cancelProcessOnExternalsFail: true, credentialsId: 'BUILD_USER', depthOption: 'unknown', ignoreExternalsOption: false, local: '.', remote: svn_url]], quietOperation: false, workspaceUpdater: [$class: 'UpdateWithCleanUpdater']])
+    }
+  }
+}
+
+def UpdateSVN(svn_url, target_dir="%CD%"){
+  dir(target_dir){
+    withCredentials([usernamePassword(credentialsId: 'BUILD_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {          
+        bat "svn update "+SVN_UPDATE_TAG+" --set-depth infinity --username $USERNAME --password $PASSWORD"
+    }
+  }
+}
+
+def CleanUpSVN_WithTortoiseProc(target_dir="%CD%"){
+  dir(target_dir){
+    bat 'TortoiseProc.exe /command:cleanup /path:%cd%  /delunversioned /noui /nodlg  /delignored  /externals ' 
+    bat 'TortoiseProc.exe /command:cleanup /path:%cd% /noui /nodlg  /externals /revert '
+  }
+}
 def xcopy(String src, String dst, String flag="")
 {
         bat """xcopy "${src}" "${dst}" ${flag}"""       
