@@ -45,6 +45,7 @@ def IsNeedCheckoutSVN(svn_url, target_dir="%CD%"){
     } catch (Exception e) {
         isNeedCheckout  = true
     }
+	echo 'return isNeedCheckout : ' + String.valueOf(isNeedCheckout)	
     return isNeedCheckout
 }
 
