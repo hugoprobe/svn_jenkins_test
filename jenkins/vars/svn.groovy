@@ -36,7 +36,7 @@ def update(svn_url, revision="head"){
     }
 }
 
-def cleanupUsingTortoise(target_dir="%CD%"){  
+def cleanupUsingTortoise(){  
     bat '''TortoiseProc.exe /command:cleanup /path:%cd%  /delunversioned /noui /nodlg  /delignored  /externals 
            TortoiseProc.exe /command:cleanup /path:%cd% /noui /nodlg  /externals /revert ''' 
 }
