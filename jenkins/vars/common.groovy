@@ -26,9 +26,9 @@ def deepmkdir(String path)
 def IsNeedCheckoutSVN(svn_url, target_dir="%CD%"){
     def isNeedCheckout=false, current_svn_url=""
     def CURRENT_SVN_URL_SCRIPT  = ''' @echo off  
-                                      pushd ''' + target_dir +'''  
+rem                                       pushd ''' + target_dir +'''  
                                       call :fetch_svn_url
-                                      popd
+rem                                      popd
                                       goto :end
                                       :fetch_svn_url
                                         set "SVN_URL="
