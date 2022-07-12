@@ -1,4 +1,4 @@
-def isNeedCheckout(svn_url, target_dir="%CD%"){
+def isNeedCheckout(svn_url){
     def isNeedCheckout=false, current_svn_url=""
     def CURRENT_SVN_URL_SCRIPT  = ''' @echo off   
                                       call :fetch_svn_url
