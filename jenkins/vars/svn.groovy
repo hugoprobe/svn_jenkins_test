@@ -24,10 +24,23 @@ def isNeedCheckout(svn_url){
     return isNeedCheckout
 }
 
-def checkout(svn_url){
-    withCredentials([usernamePassword(credentialsId: 'BUILD_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {    
-        checkout([$class: 'SubversionSCM', locations: [[cancelProcessOnExternalsFail: true, credentialsId: 'BUILD_USER', depthOption: 'unknown', ignoreExternalsOption: false, local: '.', remote: svn_url]], quietOperation: false, workspaceUpdater: [$class: 'UpdateWithCleanUpdater']])
-    }  
+def checkout(svn_url){       
+    checkout([	$class: 'SubversionSCM', 
+		locations: [
+			     [	
+				cancelProcessOnExternalsFail: true, 
+				credentialsId: 'BUILD_USER', 
+			      	depthOption: 'unknown', 
+			      	ignoreExternalsOption: false, 
+			      	local: '.', 
+			      	remote: svn_url
+			     ]
+			   ], 
+	      	quietOperation: false, 
+	      	workspaceUpdater: [
+				    $class: 'UpdateWithCleanUpdater'
+				  ]
+	     ])    
 }
 
 def update(svn_url, revision="head"){
