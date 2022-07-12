@@ -38,9 +38,11 @@ rem                                      popd
                                       :end
                                   '''
     try {
-        echo 'svn url : ' + svn_url
+        
         current_svn_url = bat(script:CURRENT_SVN_URL_SCRIPT, returnStdout:true)
         current_svn_url = current_svn_url.trim()
+	echo 'svn url : ' + svn_url
+	echo 'current svn url : ' + current_svn_url
         isNeedCheckout  = (current_svn_url==svn_url)?false:true        
     } catch (Exception e) {
         isNeedCheckout  = true
