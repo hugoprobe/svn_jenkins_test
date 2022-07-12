@@ -25,7 +25,6 @@ def deepmkdir(String path)
 
 def IsNeedCheckoutSVN(svn_url, target_dir="%CD%"){
     def isNeedCheckout=false, current_svn_url=""
-    def csvn = checkout svn_url
     def CURRENT_SVN_URL_SCRIPT  = ''' @echo off  
                                       pushd ''' + target_dir +'''  
                                       call :fetch_svn_url
@@ -39,10 +38,10 @@ def IsNeedCheckoutSVN(svn_url, target_dir="%CD%"){
                                       :end
                                   '''
     try {
-        echo 'scm svn url : ' + csvn.SVN_URL
+        echo 'svn url : ' + svn_url
         current_svn_url = bat(script:CURRENT_SVN_URL_SCRIPT, returnStdout:true)
         current_svn_url = current_svn_url.trim()
-        isNeedCheckout  = (current_svn_url==csvn.SVN_URL)?false:true        
+        isNeedCheckout  = (current_svn_url==svn_url)?false:true        
     } catch (Exception e) {
         isNeedCheckout  = true
     }
