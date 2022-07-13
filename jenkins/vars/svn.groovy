@@ -25,7 +25,8 @@ def shouldCheckoutTrunk(svn_url){
 }
 
 def checkoutTrunk(svn_url){       
-    checkout([	$class: 'SubversionSCM', 
+    org.jenkinsci.plugins.workflow.steps.scm.checkout(
+	[	$class: 'SubversionSCM', 
 		locations: [
 			     [	
 				cancelProcessOnExternalsFail: true, 
@@ -40,7 +41,8 @@ def checkoutTrunk(svn_url){
 	      	workspaceUpdater: [
 				    $class: 'UpdateWithCleanUpdater'
 				  ]
-	     ])    
+	]
+    )    
 }
 
 def updateTrunk(revision="head"){
