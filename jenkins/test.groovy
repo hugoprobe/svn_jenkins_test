@@ -30,7 +30,7 @@ pipeline {
                     steps {
                         script {
                          //def c=checkout scm;
-                         echo "svn_url: " + String.valueOf(scm.getUserRemoteConfigs()[0].getUrl())
+                         echo "svn_url: " + String.valueOf(scm.getBrowser())
                          loadLibrary()
                        
                         }
