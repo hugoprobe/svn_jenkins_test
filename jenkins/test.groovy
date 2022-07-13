@@ -29,7 +29,8 @@ pipeline {
                 stage('Hello') {
                     steps {
                         script {
-                         echo "svn_url: $SVN_URL"
+                         def c=checkout scm;
+                         echo "svn_url: ${c.SVN_URL}"
                          loadLibrary()
                        
                         }
