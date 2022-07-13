@@ -37,7 +37,8 @@ pipeline {
                     }
                 }
             }
-        }    
+        }   
+        /*
         stage("Build Flow"){
             agent {
                 node {
@@ -58,22 +59,15 @@ pipeline {
                          //loadLibrary()
                           //  common.methodA() 
                            // common.methodB()
-                                  /*                   
-                        // common.makedir("test\\test\\test")
-                            // common.deepmkdir("D:\\test2a\\test2b\\test2c\\taklsdgj\\asldghjajsdh\\oiur\\qwer")
-                            common.makedir("C:\\copy_share")
-                            common.makedir("C:\\test2a_share")
-                            common.xcopy("D:\\test2a\\*","C:\\test2a_share", "/Y /R /I /S /E");
-                            common.xcopy("D:\\share\\*","C:\\copy_share", "/Y /R /I /S /E");
-                            common.xcopy("D:\\bundletool.jar","C:\\");
-                            common.xcopy("D:\\USAHA","C:\\");
-                                */
+                                                     
+           
+                                
                         }
                         
                     }
                 }
             }
-        }
+        }*/
     }
         
     
