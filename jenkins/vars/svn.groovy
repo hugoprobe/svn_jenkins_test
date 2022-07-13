@@ -1,4 +1,4 @@
-def isNeedCheckout(svn_url){
+def shouldCheckoutTrunk(svn_url){
     def isNeedCheckout=false, current_svn_url=""
     def CURRENT_SVN_URL_SCRIPT  = ''' @echo off   
                                       call :fetch_svn_url
@@ -24,7 +24,7 @@ def isNeedCheckout(svn_url){
     return isNeedCheckout
 }
 
-def checkout(svn_url){       
+def checkoutTrunk(svn_url){       
     checkout([	$class: 'SubversionSCM', 
 		locations: [
 			     [	
@@ -43,13 +43,13 @@ def checkout(svn_url){
 	     ])    
 }
 
-def update(svn_url, revision="head"){
+def updateTrunk(revision="head"){
     withCredentials([usernamePassword(credentialsId: 'BUILD_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {          
         bat "svn update --set-depth infinity --username $USERNAME --password $PASSWORD"
     }
 }
 
-def cleanupUsingTortoise(){  
+def cleanupTrunkWithTortoise(){  
     bat '''TortoiseProc.exe /command:cleanup /path:%cd%  /delunversioned /noui /nodlg  /delignored  /externals 
            TortoiseProc.exe /command:cleanup /path:%cd% /noui /nodlg  /externals /revert ''' 
 }
