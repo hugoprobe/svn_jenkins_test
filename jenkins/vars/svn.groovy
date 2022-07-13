@@ -1,5 +1,5 @@
-def shouldCheckoutTrunk(svn_url){
-    def isNeedCheckout=false, current_svn_url=""
+def isNeedCheckout(String svn_url){
+    def _isNeedCheckout=false, current_svn_url=""
     def CURRENT_SVN_URL_SCRIPT  = ''' @echo off   
                                       call :fetch_svn_url
                                       goto :end
@@ -16,12 +16,11 @@ def shouldCheckoutTrunk(svn_url){
         current_svn_url = current_svn_url.trim()
 	echo 'svn url : ' + svn_url
 	echo 'current svn url : ' + current_svn_url
-        isNeedCheckout  = (current_svn_url==svn_url)?false:true        
+        _isNeedCheckout  = (current_svn_url==svn_url)?false:true        
     } catch (Exception e) {
-        isNeedCheckout  = true
-    }
-	echo 'return isNeedCheckout : ' + String.valueOf(isNeedCheckout)	
-    return isNeedCheckout
+        _isNeedCheckout  = true
+    }		
+    return _isNeedCheckout
 }
 
 def checkout(String svn_url){  
@@ -49,13 +48,13 @@ def checkout(String svn_url){
     )    
 }
 
-def updateTrunk(revision="head"){
+def update(revision="head"){
     withCredentials([usernamePassword(credentialsId: 'BUILD_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {          
-        bat "svn update --set-depth infinity --username $USERNAME --password $PASSWORD"
+        bat 'svn update --set-depth infinity --username "$USERNAME" --password "$PASSWORD"'
     }
 }
 
-def cleanupTrunkWithTortoise(){  
+def cleanupWithTortoise(){  
     bat '''TortoiseProc.exe /command:cleanup /path:%cd%  /delunversioned /noui /nodlg  /delignored  /externals 
            TortoiseProc.exe /command:cleanup /path:%cd% /noui /nodlg  /externals /revert ''' 
 }
