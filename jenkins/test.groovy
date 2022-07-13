@@ -30,7 +30,7 @@ pipeline {
                     steps {
                         script {
                          //def c=checkout scm;
-                         echo "svn_url: " + String.valueOf(env.SVN_URL)
+                        // echo "svn_url: " + String.valueOf(env.SVN_URL)
                          loadLibrary()
                        
                         }
