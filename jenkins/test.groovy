@@ -17,11 +17,27 @@ def common(){
 */
 
 def  loadLibrary(){
-    library identifier: "${NODE_LABELS}@", retriever: modernSCM(scm: [$class: 'SubversionSCMSource', credentialsId: '4eaa4918-7fd4-4338-becd-3c76a30aeed9', remoteBase: 'file:///D:/PROGRAMMING/Projects/RnD/svn/repo/trunk/', workspaceUpdater: [$class: 'CheckoutUpdater']], libraryPath: 'jenkins/')
+   // def c=checkout scm;
+    library identifier: "${NODE_LABELS}@", retriever: modernSCM(scm: [$class: 'SubversionSCMSource', credentialsId: '4eaa4918-7fd4-4338-becd-3c76a30aeed9', remoteBase: 'https://github.com/hugoprobe/svn_jenkins_test/trunk/jenkins', workspaceUpdater: [$class: 'CheckoutUpdater']])
 }
 pipeline {
     agent none
-    stages{         
+    stages{     
+        stage("Checkout"){
+           //// agent any            
+            stages {
+                stage('Hello') {
+                    steps {
+                        script {
+                        // echo "Test agent any"
+                         loadLibrary()
+                       
+                        }
+                        
+                    }
+                }
+            }
+        }    
         stage("Build Flow"){
             agent {
                 node {
@@ -33,13 +49,15 @@ pipeline {
                 stage('Hello') {
                     steps {
                         script {
-                            
+                            def c=checkout scm;
+                            echo "test: " 
+                          //  echo "scm url: "  + scm
                          //   def s = checkout scm
                          //   echo "node name : ${NODE_LABELS} svn url : " + s.SVN_URL  
-                         loadLibrary()
-                         loadLibrary()
-                            common.methodA() 
-                            common.methodB()
+                         //loadLibrary()
+                         //loadLibrary()
+                          //  common.methodA() 
+                           // common.methodB()
                                   /*                   
                         // common.makedir("test\\test\\test")
                             // common.deepmkdir("D:\\test2a\\test2b\\test2c\\taklsdgj\\asldghjajsdh\\oiur\\qwer")
