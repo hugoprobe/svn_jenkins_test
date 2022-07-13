@@ -24,7 +24,7 @@ def shouldCheckoutTrunk(svn_url){
     return isNeedCheckout
 }
 
-def checkoutTrunk(svn_url){       
+def checkout(svn_url){       
     this.checkout(
 	[	$class: 'SubversionSCM', 
 		locations: [
