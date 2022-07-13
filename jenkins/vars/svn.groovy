@@ -25,7 +25,7 @@ def shouldCheckoutTrunk(svn_url){
 }
 
 def checkoutTrunk(svn_url){       
-    org.jenkinsci.plugins.workflow.steps.scm.checkout(
+    'org.jenkinsci.plugins.workflow.steps.scm.SCMStep.checkout'(
 	[	$class: 'SubversionSCM', 
 		locations: [
 			     [	
