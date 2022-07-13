@@ -29,7 +29,7 @@ pipeline {
                 stage('Hello') {
                     steps {
                         script {
-                         echo "Test agent any"
+                         echo "svn_url: $SVN_URL"
                          loadLibrary()
                        
                         }
