@@ -18,7 +18,7 @@ def common(){
 
 def  loadLibrary(){
    // def c=checkout scm;
-    library identifier: "${NODE_LABELS}@", retriever: modernSCM(scm: [$class: 'SubversionSCMSource', credentialsId: '4eaa4918-7fd4-4338-becd-3c76a30aeed9', remoteBase: 'https://github.com/hugoprobe/svn_jenkins_test/trunk/jenkins', workspaceUpdater: [$class: 'CheckoutUpdater']])
+    library identifier: "common@", retriever: modernSCM(scm: [$class: 'SubversionSCMSource', credentialsId: '4eaa4918-7fd4-4338-becd-3c76a30aeed9', remoteBase: 'https://github.com/hugoprobe/svn_jenkins_test/trunk/jenkins', workspaceUpdater: [$class: 'CheckoutUpdater']])
 }
 pipeline {
     agent none
