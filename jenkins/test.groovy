@@ -29,7 +29,9 @@ pipeline {
                 stage('Hello') {
                     steps {
                         script {
-                         //def c=checkout scm;
+                            node("master"){
+                                def c=checkout scm;
+                            }
                          echo "svn_url: " + String.valueOf(scm.locations.first().remote)
                          loadLibrary()
                        
