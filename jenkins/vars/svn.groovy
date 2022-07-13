@@ -27,7 +27,7 @@ def shouldCheckoutTrunk(svn_url){
 def checkout(String svn_url){  
   /*
     This checkout calling below will call 'checkout' from jenkins 'Pipeline: SCM Step' plugin. https://www.jenkins.io/doc/pipeline/steps/workflow-scm-step/.
-    NOT calling nested/recursively to 'checkout' method on this file (because they have different argument type parameter).
+    NOT calling nested/recursively to 'checkout' method inside this file (because they have different argument type parameter).
   */
     checkout(
 	[	$class: 'SubversionSCM', 
