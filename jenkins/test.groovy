@@ -46,7 +46,7 @@ pipeline {
                 }
             }
         }   
-        /*
+        
         stage("Build Flow"){
             agent {
                 node {
@@ -75,7 +75,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
     }
         
     
