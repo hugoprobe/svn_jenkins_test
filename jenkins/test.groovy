@@ -33,7 +33,7 @@ pipeline {
                             node("master"){
                                 def c=checkout scm;
                             }*/
-                         echo "svn_url: " + String.valueOf(scm.locations.first().remote)
+                         echo "svn_url: " + String.valueOf(scm.locations)
                          loadLibrary()
                        
                         }
