@@ -33,7 +33,11 @@ pipeline {
                             node("master"){
                                 def c=checkout scm;
                             }*/
-                         echo "svn_url: " + String.valueOf(scm.locations.first().remote)
+                            try{
+                                echo "svn_url: " + String.valueOf(scm.locations.first().remote)
+                            }catch(Exception e){
+                                echo "Failed to get svn URL: " + String.valueOf(e)
+                            }
                          loadLibrary()
                        
                         }
