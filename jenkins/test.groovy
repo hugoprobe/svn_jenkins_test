@@ -44,9 +44,18 @@ pipeline {
                         
                     }
                 }
+                stage('Test') {
+                    steps {
+                        script {
+                           
+                            echo "SVN_URL: $SVN_URL"
+                        }
+                        
+                    }
+                }
             }
         }   
-        
+        /*
         stage("Build Flow"){
             agent {
                 node {
@@ -75,7 +84,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
     }
         
     
