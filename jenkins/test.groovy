@@ -34,7 +34,7 @@ pipeline {
                                 def c=checkout scm;
                             }*/
                             try{
-                                echo "svn_url: " + String.valueOf(scm.locations.first().remote)
+                                env.SVN_URL= String.valueOf(scm.locations.first().remote)
                             }catch(Exception e){
                                 echo "Failed to get svn URL: " + String.valueOf(e)
                             }
@@ -50,7 +50,7 @@ pipeline {
         stage("Build Flow"){
             agent {
                 node {
-                    label "slave1"
+                    label "JOGBLD0020"
                     customWorkspace "D:\\test_jenkins"
                 }
             }
@@ -58,8 +58,8 @@ pipeline {
                 stage('Hello') {
                     steps {
                         script {
-                            def c=checkout scm;
-                            echo "test: " 
+                            //def c=checkout scm;
+                            echo "SVN_URL: $SVN_URL" 
                           //  echo "scm url: "  + scm
                          //   def s = checkout scm
                          //   echo "node name : ${NODE_LABELS} svn url : " + s.SVN_URL  
