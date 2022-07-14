@@ -116,7 +116,7 @@ pipeline {
                                         def scm_info = checkout scm
                                         echo "scm info : ${scm_info.SVN_URL}"
                                       
-                                      
+                                      /*
                                         SVN_URL=SVN_LIB_URL
                                         if(svn.isNeedCheckout(SVN_URL)){
                                             stage("Checkout"){
@@ -131,7 +131,7 @@ pipeline {
 
                                         stage("Update"){
                                             svn.update(params.SVN_Revision)
-                                        }
+                                        }*/
                                     }
 
                                 if(params.BuildFlow.contains("ApplyPatches"))
