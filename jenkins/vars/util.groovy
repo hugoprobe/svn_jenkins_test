@@ -12,7 +12,7 @@ def deepmkdir(String path)
         makedir(path)
 }
 
-def mklink(char type, String link, String target){	
+def mklink(type, String link, String target){	
 	bat """ IF EXIST $link rmdir $link
               	mklink /$type $link $target """
 }
