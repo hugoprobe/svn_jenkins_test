@@ -15,15 +15,17 @@ def getValue(str){
     return str
 }
 //For getting environment variables via batch
-def getBatchEnv(String strScript, String keys)
+def getBatchEnv(String strScript, String vars)
 {
     def result=[]
-    printedKeys="%"+keys.replace(',' , "%:%")+"%:null"
+    printedVars="%"+vars.replace(',' , "%:%")+"%:null"
     echo "printedKeys $printedKeys"
     def printedScript  = ''' @echo off
                          ''' + strScript + '''
-                            echo ''' + printedKeys
-    def values = (bat(script:printedScript, returnStdout:true)).trim().split(":")    
+                            echo ''' + printedVars
+    def values 	= (bat(script:printedScript, returnStdout:true)).trim().split(":")  
+    def keys	= vars.split(',')
+	
     for(int i=0; i<keys.size();i++)
 	result.add("${keys[i]}=${values[i]}")
     return result 
