@@ -1,5 +1,5 @@
 def mkdir(String path) {
-        bat 'if NOT EXIST ' + path + ' mkdir '+ path        
+        bat 'if NOT EXIST "' + path + '" mkdir '+ path        
 }
 
 def deepmkdir(String path)
@@ -16,7 +16,16 @@ def mklink(type, String link, String target){
 	bat """ IF EXIST $link rmdir $link
               	mklink /$type $link $target """
 }
-
+def delete(String path, String options="")
+{	
+	bat '	if exist "' + path +'''"\* (
+		    rd   ''' + (options?:'/Q /S') +' "' + path + '''" 
+		) else if exist "''' + path + '''" (
+		    del  ''' + (options?:'/Q /F /S') + ' "' + path + '''" 
+		) else (
+		    echo [util.delete] Failed to delete: Path Not Found.
+		)'''
+}
 //For getting environment variables via batch
 def getBatchEnv(String strScript, String vars)
 {
