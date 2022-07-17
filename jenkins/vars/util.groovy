@@ -11,8 +11,8 @@ def deepmkdir(String path)
         }
         makedir(path)
 }
-def getValue(){
-    return "TESTTest"
+def getValue(str){
+    return str
 }
 //For getting environment variables via batch
 def getBatchEnv(String strScript="", List<String> args)
