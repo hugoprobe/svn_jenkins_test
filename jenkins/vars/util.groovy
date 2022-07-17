@@ -18,7 +18,7 @@ def getValue(str){
 def getBatchEnv(String strScript, String[] args)
 {
     def result=[]
-    vars="%"+args.join('%%:%%')+"%:null"
+    vars="%"+args.join($/%:%/$)+"%:null"
     echo "vars $vars"
     def getVariables  = ''' @echo off
                         ''' + strScript + '''
