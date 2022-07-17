@@ -15,7 +15,7 @@ def getValue(str){
     return str
 }
 //For getting environment variables via batch
-def getBatchEnv(String strScript="", String[] args)
+def getBatchEnv(String strScript, String[] args)
 {
     def result=[:]
     args="%"+args.join("%:%")+"%:null"
