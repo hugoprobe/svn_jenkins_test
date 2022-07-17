@@ -18,11 +18,11 @@ def getValue(str){
 def getBatchEnv(String strScript, String vars)
 {
     def result=[]
-    printedVars="%"+vars.replace(',' , "%:%")+"%:null"
+    printedKeys="%"+vars.replace(',' , "%:%")+"%:null"
     echo "printedKeys $printedKeys"
     def printedScript  = ''' @echo off
                          ''' + strScript + '''
-                            echo ''' + printedVars
+                            echo ''' + printedKeys
     def values 	= (bat(script:printedScript, returnStdout:true)).trim().split(":")  
     def keys	= vars.split(',')
 	
