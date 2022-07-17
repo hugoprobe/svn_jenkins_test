@@ -18,7 +18,7 @@ def mklink(type, String link, String target){
 }
 def delete(String path, String options="")
 {	
-	bat '	if exist "' + path +'''"\* (
+	bat '	if exist "' + path +'''"\\* (
 		    rd   ''' + (options?:'/Q /S') +' "' + path + '''" 
 		) else if exist "''' + path + '''" (
 		    del  ''' + (options?:'/Q /F /S') + ' "' + path + '''" 
