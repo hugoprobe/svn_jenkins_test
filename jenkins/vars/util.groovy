@@ -20,10 +20,10 @@ def getBatchEnv(String strScript, String keys)
     def result=[]
     printedKeys="%"+keys.replace(',' , "%:%")+"%:null"
     echo "printedKeys $printedKeys"
-    def getVariables  = ''' @echo off
-                        ''' + strScript + '''
+    def printedScript  = ''' @echo off
+                         ''' + strScript + '''
                             echo ''' + printedKeys
-    def values = (bat(script:getVariables, returnStdout:true)).trim().split(":")    
+    def values = (bat(script:printedScript, returnStdout:true)).trim().split(":")    
     for(int i=0; i<keys.size();i++)
 	result.add("${keys[i]}=${values[i]}")
     return result 
