@@ -11,9 +11,12 @@ def deepmkdir(String path)
         }
         makedir(path)
 }
-def getValue(str){
-    return str
+
+def mklink(char type, String link, String target){	
+	bat """ IF EXIST $link rmdir $link
+              	mklink /$type $link $target """
 }
+
 //For getting environment variables via batch
 def getBatchEnv(String strScript, String vars)
 {
