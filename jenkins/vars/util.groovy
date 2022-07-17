@@ -18,11 +18,11 @@ def getValue(str){
 def getBatchEnv(String strScript, String[] args)
 {
     def result=[]
-    args="%"+args.join("%:%")+"%:null"
-    echo "args $args"
+    vars="%"+args.join('%:%')+"%:null"
+    echo "vars $vars"
     def getVariables  = ''' @echo off
                         ''' + strScript + '''
-                            echo ''' + args
+                            echo ''' + COMPRESSION
     def values = (bat(script:getVariables, returnStdout:true)).trim().split(":")    
     for(int i=0; i<args.size();i++)
 	result.add("${args[i]}=${values[i]}")
