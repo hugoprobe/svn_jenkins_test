@@ -29,7 +29,7 @@ def delete(String path, String options="")
 
 def rename(String ori_path, String renamed_target)
 {
-	bat "ren ${ori_path} ${renamed_target}"	
+	bat "if EXIST ${ori_path} ren ${ori_path} ${renamed_target}"	
 }
 
 //For getting environment variables via batch
