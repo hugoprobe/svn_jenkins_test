@@ -26,6 +26,12 @@ def delete(String path, String options="")
 		    echo [util.delete] Failed to delete: Path Not Found.
 		)'''
 }
+
+def rename(String ori_path, String renamed_target)
+{
+	bat "ren ${ori_path} ${renamed_target}"	
+}
+
 //For getting environment variables via batch
 def getBatchEnv(String strScript, String vars)
 {
