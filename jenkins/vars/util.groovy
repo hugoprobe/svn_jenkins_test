@@ -1,8 +1,9 @@
 def mkdir(String path) {
         bat """	@echo off 
 		echo [utils.mkdir] Trying to mkdir "${path}"
-		if NOT EXIST "${path}" 
-		mkdir "${path}" """
+		if NOT EXIST "${path}" (
+			mkdir "${path}"
+		)"""
 }
 
 def deepmkdir(String path)
@@ -42,8 +43,7 @@ def isExist (str_path) {
 def rename(String ori_path, String renamed_target)
 {
 	bat """	@echo off 
-		echo [utils.rename] Trying to rename "${ori_path}" into ${renamed_target}
-		rem if NOT EXIST ${renamed_target} 
+		echo [utils.rename] Trying to rename "${ori_path}" into ${renamed_target}		
 		ren "${ori_path}" "${renamed_target}" """	
 }
 
