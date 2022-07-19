@@ -13,7 +13,7 @@ def deepmkdir(String path)
         if ( !(fileExists(path) || ( lastSlashIdx==1 && path[0]==path[1]) || path[lastSlashIdx-1]==':') ){                
                 deepmkdir(parentDir)
         }
-        makedir(path)
+        mkdir(path)
 }
 
 def mklink(type, String link, String target){	
