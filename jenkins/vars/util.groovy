@@ -1,5 +1,8 @@
 def mkdir(String path) {
-        bat '@echo off && if NOT EXIST "' + path + '" mkdir '+ path        
+        bat """	@echo off 
+		echo [utils.mkdir] Trying to mkdir "${path}"
+		if NOT EXIST "${path}" 
+		mkdir "${path}" """
 }
 
 def deepmkdir(String path)
@@ -14,15 +17,17 @@ def deepmkdir(String path)
 
 def mklink(type, String link, String target){	
 	bat """ @echo off
-		IF EXIST $link rmdir $link
+		echo [utils.mklink] Trying to mklink /$type $link $target
+		IF EXIST $link rmdir $link		
               	mklink /$type $link $target """
 }
 
 def delete(String path, String options="")
 {	
-	bat """ @echo off
+	bat """ @echo off		
+		echo [utils.delete] Trying to delete "${path}"
 		if exist "${path}"\\* (
-		    rd   """ + (options?:'/Q /S') + """ "${path}" 
+		    rd   """ + (options?:'/Q /S') + """ "${path}" 		    
 		) else if exist "${path}" (
 		    del  """ + (options?:'/Q /F /S') + """ "${path}" 
 		) else (
@@ -36,12 +41,16 @@ def isExist (str_path) {
 
 def rename(String ori_path, String renamed_target)
 {
-	bat "@echo off && if EXIST ${ori_path} ren ${ori_path} ${renamed_target}"	
+	bat """	@echo off 
+		echo [utils.rename] Trying to rename "${ori_path}" into ${renamed_target}
+		if NOT EXIST ${renamed_target} 
+		ren "${ori_path}" "${renamed_target}" """	
 }
 
 def copy(String src, String dst, String opt='')
 {
 	bat """ @echo off
+		echo [utils.copy] Trying to copy "${src}" to "${dst}"
 		if exist  "${src}\\*" (
 		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I /S /E') + """
 		) else if exist "${src}" (
