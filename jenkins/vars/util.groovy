@@ -16,6 +16,7 @@ def mklink(type, String link, String target){
 	bat """ IF EXIST $link rmdir $link
               	mklink /$type $link $target """
 }
+
 def delete(String path, String options="")
 {	
 	bat '	if exist "' + path +'''"\\* (
@@ -25,6 +26,10 @@ def delete(String path, String options="")
 		) else (
 		    echo [util.delete] Failed to delete: Path Not Found.
 		)'''
+}
+
+def isExist (str_path) {
+	return bat(script:'@echo off && if exist "'+str_path+'" (echo true) else echo false', returnStdout:true).trim()=="true"
 }
 
 def rename(String ori_path, String renamed_target)
