@@ -37,6 +37,11 @@ def rename(String ori_path, String renamed_target)
 	bat "if EXIST ${ori_path} ren ${ori_path} ${renamed_target}"	
 }
 
+def copy(String src, String dst, String options='/Y /R /I /S /E')
+{
+	bat """xcopy "${data_obb.src}" "${destination}" ${options}"""
+}
+
 //For getting environment variables via batch
 def getBatchEnv(String strScript, String vars)
 {
