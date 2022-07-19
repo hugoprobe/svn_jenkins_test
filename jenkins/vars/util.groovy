@@ -19,7 +19,8 @@ def mklink(type, String link, String target){
 
 def delete(String path, String options="")
 {	
-	bat '	if exist "' + path +'''"\\* (
+	bat ''' @echo off
+		if exist "''' + path +'''"\\* (
 		    rd   ''' + (options?:'/Q /S') +' "' + path + '''" 
 		) else if exist "''' + path + '''" (
 		    del  ''' + (options?:'/Q /F /S') + ' "' + path + '''" 
@@ -39,7 +40,8 @@ def rename(String ori_path, String renamed_target)
 
 def copy(String src, String dst, String opt='')
 {
-	bat """	if exist  "${src}\\*" (
+	bat """	@echo off		
+		if exist  "${src}\\*" (
 		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I /S /E') + """
 		) else if exist "${src}" (
 		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I') + """
