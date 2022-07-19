@@ -1,6 +1,6 @@
 def mkdir(String path) {
         bat """	@echo off 
-		echo [utils.mkdir] "${path}"
+		echo [util.mkdir] "${path}"
 		if NOT EXIST "${path}" (
 			mkdir "${path}"
 		)"""
@@ -18,7 +18,7 @@ def deepmkdir(String path)
 
 def mklink(type, String link, String target){	
 	bat """ @echo off
-		echo [utils.mklink] /$type $link $target
+		echo [util.mklink] /$type $link $target
 		IF EXIST $link rmdir $link		
               	mklink /$type $link $target """
 }
@@ -26,7 +26,7 @@ def mklink(type, String link, String target){
 def delete(String path, String options="")
 {	
 	bat """ @echo off		
-		echo [utils.delete] "${path}"
+		echo [util.delete] "${path}"
 		if exist "${path}"\\* (
 		    rd   """ + (options?:'/Q /S') + """ "${path}" 		    
 		) else if exist "${path}" (
@@ -43,14 +43,14 @@ def isExist (str_path) {
 def rename(String ori_path, String renamed_target)
 {
 	bat """	@echo off 
-		echo [utils.rename] "${ori_path}" into ${renamed_target}		
+		echo [util.rename] "${ori_path}" into "${renamed_target}"
 		ren "${ori_path}" "${renamed_target}" """	
 }
 
 def copy(String src, String dst, String opt='')
 {
 	bat """ @echo off
-		echo [utils.copy] ${opt} "${src}" to "${dst}"
+		echo [util.copy] ${opt} "${src}" to "${dst}"
 		if exist  "${src}\\*" (
 		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I /S /E') + """
 		) else if exist "${src}" (
