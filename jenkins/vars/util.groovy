@@ -37,9 +37,15 @@ def rename(String ori_path, String renamed_target)
 	bat "if EXIST ${ori_path} ren ${ori_path} ${renamed_target}"	
 }
 
-def copy(String src, String dst, String opt='/Y /R /I /S /E')
+def copy(String src, String dst, String opt='')
 {
-	bat """xcopy "${src}" "${dst}" ${opt}"""
+	bat """	if exist  "${src}\\*" (
+		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I /S /E') + """
+		) else if exist "${src}" (
+		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I') + """
+		) else (
+		    echo [util.delete] Failed to copy: Source Not Found.
+		)"""
 }
 
 //For getting environment variables via batch
