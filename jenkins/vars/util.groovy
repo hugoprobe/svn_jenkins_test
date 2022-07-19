@@ -37,7 +37,6 @@ def rename(String ori_path, String renamed_target)
 	bat "if EXIST ${ori_path} ren ${ori_path} ${renamed_target}"	
 }
 
-@NonCPS
 //For getting environment variables via batch
 def getBatchEnv(String strScript, String vars)
 {
