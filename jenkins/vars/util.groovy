@@ -1,5 +1,5 @@
 def mkdir(String path) {
-        bat 'if NOT EXIST "' + path + '" mkdir '+ path        
+        bat '@echo off && if NOT EXIST "' + path + '" mkdir '+ path        
 }
 
 def deepmkdir(String path)
@@ -13,20 +13,21 @@ def deepmkdir(String path)
 }
 
 def mklink(type, String link, String target){	
-	bat """ IF EXIST $link rmdir $link
+	bat """ @echo off
+		IF EXIST $link rmdir $link
               	mklink /$type $link $target """
 }
 
 def delete(String path, String options="")
 {	
-	bat ''' @echo off
-		if exist "''' + path +'''"\\* (
-		    rd   ''' + (options?:'/Q /S') +' "' + path + '''" 
-		) else if exist "''' + path + '''" (
-		    del  ''' + (options?:'/Q /F /S') + ' "' + path + '''" 
+	bat """ @echo off
+		if exist "${path}"\\* (
+		    rd   """ + (options?:'/Q /S') + """ "${path}" 
+		) else if exist "${path}" (
+		    del  """ + (options?:'/Q /F /S') + """ "${path}" 
 		) else (
-		    echo [util.delete] Failed to delete: Path Not Found.
-		)'''
+		    echo [util.delete] Failed to delete, path NOT FOUND: "${path}"
+		)"""
 }
 
 def isExist (str_path) {
@@ -35,7 +36,7 @@ def isExist (str_path) {
 
 def rename(String ori_path, String renamed_target)
 {
-	bat "if EXIST ${ori_path} ren ${ori_path} ${renamed_target}"	
+	bat "@echo off && if EXIST ${ori_path} ren ${ori_path} ${renamed_target}"	
 }
 
 def copy(String src, String dst, String opt='')
@@ -46,7 +47,7 @@ def copy(String src, String dst, String opt='')
 		) else if exist "${src}" (
 		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I') + """
 		) else (
-		    echo [util.delete] Failed to copy: Source Not Found.
+		    echo [util.copy] Failed to copy, source NOT FOUND: "${src}"		    
 		)"""
 }
 
@@ -54,8 +55,7 @@ def copy(String src, String dst, String opt='')
 def getBatchEnv(String strScript, String vars)
 {
     def result=[]
-    printedKeys="%"+vars.replace(',' , "%:%")+"%:null"
-    echo "printedKeys $printedKeys"
+    printedKeys="%"+vars.replace(',' , "%:%")+"%:null"    
     def printedScript  = ''' @echo off
                          ''' + strScript + '''
                             echo ''' + printedKeys
