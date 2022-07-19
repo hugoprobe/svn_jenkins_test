@@ -40,7 +40,7 @@ def rename(String ori_path, String renamed_target)
 
 def copy(String src, String dst, String opt='')
 {
-	bat """	@echo off		
+	bat """			
 		if exist  "${src}\\*" (
 		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I /S /E') + """
 		) else if exist "${src}" (
