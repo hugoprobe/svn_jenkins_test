@@ -43,7 +43,7 @@ def rename(String ori_path, String renamed_target)
 {
 	bat """	@echo off 
 		echo [utils.rename] Trying to rename "${ori_path}" into ${renamed_target}
-		if NOT EXIST ${renamed_target} 
+		rem if NOT EXIST ${renamed_target} 
 		ren "${ori_path}" "${renamed_target}" """	
 }
 
