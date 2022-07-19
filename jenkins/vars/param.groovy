@@ -1,4 +1,4 @@
-def activeChoice(it){
+def activeChoice(Map it){
     def setStrScript={str-> return [classpath: [], sandbox: true, script:(str)]}
     return [  $class: 'ChoiceParameter', 
               name: (it.name),  
@@ -10,7 +10,7 @@ def activeChoice(it){
                       ]
            ]
 }
-def activeChoiceReactive(it){
+def activeChoiceReactive(Map it){
     def setStrScript={str-> return [classpath: [], sandbox: true, script:(str)]}
     return [  $class: 'CascadeChoiceParameter', 
               name: (it.name),  
@@ -23,7 +23,7 @@ def activeChoiceReactive(it){
                       ]
            ]
 }
-def activeChoiceReactiveReference(it){
+def activeChoiceReactiveReference(Map it){
     def setStrScript={str-> return [classpath: [], sandbox: true, script:(str)]}
     return [  $class: 'DynamicReferenceParameter', 
               name: (it.name),  
