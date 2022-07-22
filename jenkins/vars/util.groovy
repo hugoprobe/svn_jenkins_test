@@ -60,6 +60,19 @@ def copy(String src, String dst, String opt='')
 		)"""
 }
 
+def getLastDirAlphabetical(String parentPath){		
+	return	(bat(script	: '''	@echo off
+					setlocal enabledelayedexpansion
+
+					for /F "tokens=* delims=" %%a in ('dir /AD /B /O-N') do (
+				    		set lastvalue=%%a
+				    		goto break
+					)
+					:break
+					echo !lastvalue!''', 
+		returnStdout:true)).trim()
+}
+
 //For getting environment variables via batch
 def getBatchEnv(String strScript, String vars)
 {
