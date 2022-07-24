@@ -60,7 +60,7 @@ def copy(String src, String dst, String opt='')
 		)"""
 }
 
-def getLastDirAlphabetical(String parentPath){		
+def getLastFolderAlphabetical(String parentPath){		
 	return	(bat(script	: '''	@echo off
 					setlocal enabledelayedexpansion
 
