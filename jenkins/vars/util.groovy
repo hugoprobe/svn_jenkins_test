@@ -60,11 +60,11 @@ def copy(String src, String dst, String opt='')
 		)"""
 }
 
-def getLastFolderAlphabetical(String parentPath){		
+def getLastFolderAlphabetical(String parentPath='%CD%'){		
 	return	(bat(script	: '''	@echo off
 					setlocal enabledelayedexpansion
 
-					for /F "tokens=* delims=" %%a in ('dir /AD /B /O-N') do (
+					for /F "tokens=* delims=" %%a in ('dir /AD /B /O-N "''' + parentPath +'''"') do (
 				    		set lastvalue=%%a
 				    		goto break
 					)
