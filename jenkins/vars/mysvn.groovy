@@ -5,6 +5,6 @@ def call(Map config) {
 	}
 }
 
-def test(message){
+def test(String message){
 	echo "[util2.test]: $message"
 }
