@@ -47,17 +47,31 @@ def rename(String ori_path, String renamed_target)
 		ren "${ori_path}" "${renamed_target}" """	
 }
 
-def copy(String src, String dst, String opt='')
-{
-	bat """ @echo off
-		echo [util.copy] ${opt} "${src}" to "${dst}"
-		if exist  "${src}\\*" (
-		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I /S /E') + """
-		) else if exist "${src}" (
-		    xcopy "${src}" "${dst}" """ + (opt?:'/Y /R /I') + """
+def copy(srcs, String dst, String opt='')
+{	
+	def assembleScript =""" 
+	   :copyPath
+		echo [util.copy] ${opt} %1 to "${dst}"
+		if exist  %1\\* (
+		    xcopy %1 "${dst}" """ + (opt?:'/Y /R /I /S /E') + """
+		) else if exist %1 (
+		    xcopy %1 "${dst}" """ + (opt?:'/Y /R /I') + """
 		) else (
-		    echo [util.copy] Failed to copy, source NOT FOUND: "${src}"		    
-		)"""
+		    echo [util.copy] Failed to copy, source NOT FOUND: %1		    
+		)
+		exit \b 0
+	"""
+	if((srcs instanceof Collection) || (srcs instanceof String[]))
+		assembleScript=	''' @echo off
+			setlocal enabledelayedexpansion
+			for  %%i in ("'''+ srcs.join('" "')+'''") do (     
+			    call :copypath %%i
+			) 
+			goto :eof''' +assembleScript	
+	else
+		assembleScript= """@echo off && call :copypath ${srcs}"""+assembleScript
+	
+	return  (assembleScript+=":eof")
 }
 
 def getLastFolderAlphabetical(String parentPath='%CD%'){		
