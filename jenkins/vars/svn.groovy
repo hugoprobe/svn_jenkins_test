@@ -3,7 +3,7 @@ def call(name) {
 	test(name)
 }*/
 def call(Map config) {
-	if(config.?test)
+	if(config?.test)
 	{
 		test(config.test.value)
 	}
