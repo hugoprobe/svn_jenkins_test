@@ -1,10 +1,10 @@
 def call(Map config) {
 	if(config?.test)
 	{
-		test(config.test.value)
+		dotest(config['test'])
 	}
 }
 
-def test(String message){
+def dotest(String message){
 	echo "[util2.test]: $message"
 }
