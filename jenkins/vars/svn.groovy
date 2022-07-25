@@ -1,12 +1,10 @@
 
 def call(name) {
-	script{
-    		echo 'call: ' + name
-	}
+	test(name)
 }
 
 def test(message){
-	echo "[util.test]: $message"
+	echo "[util2.test]: $message"
 }
 
 def isNeedCheckout(String svn_url){
