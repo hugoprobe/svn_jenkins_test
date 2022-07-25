@@ -7,5 +7,10 @@ def call(Map config) {
 
 def dotest(String message){
 	def okey="okey"
-	echo "[util2.test]: $message" + okey
+	echo "[util2.test]: $message " + okey + " " + getStringTest()
+}
+
+@NonCPS
+def getStringTest(){
+	return "HAHAHAHA"
 }
