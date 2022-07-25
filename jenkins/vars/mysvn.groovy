@@ -6,5 +6,6 @@ def call(Map config) {
 }
 
 def dotest(String message){
-	echo "[util2.test]: $message"
+	def okey="okey"
+	echo "[util2.test]: $message" + okey
 }
