@@ -71,7 +71,7 @@ def copy(srcs, String dst, String opt='')
 	else
 		assembleScript= """@echo off && call :copypath ${srcs}"""+assembleScript
 	
-	return  bat(assembleScript+":eof")
+	return  bat (assembleScript+":eof")
 }
 
 def getLastFolderAlphabetical(String parentPath='%CD%'){		
