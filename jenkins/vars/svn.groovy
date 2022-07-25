@@ -1,7 +1,7 @@
 
 def call(String name = 'human') {
 
-    test(name)
+    echo 'call: ' + name
 }
 
 def test(message){
