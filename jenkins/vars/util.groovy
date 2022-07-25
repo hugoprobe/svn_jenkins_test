@@ -1,3 +1,6 @@
+def test(message){
+	echo "[util.test]: $message"
+}
 def mkdir(String path) {
         bat """	@echo off 
 		echo [util.mkdir] "${path}"
