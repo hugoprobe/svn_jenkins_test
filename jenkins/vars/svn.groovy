@@ -1,6 +1,11 @@
-
+/*
 def call(name) {
 	test(name)
+}*/
+def call(Closure body) {
+    node('svn') {
+        body()
+    }
 }
 
 def test(message){
