@@ -1,7 +1,8 @@
 
-def call(String name = 'human') {
-
-    echo 'call: ' + name
+def call(name) {
+	script{
+    		echo 'call: ' + name
+	}
 }
 
 def test(message){
