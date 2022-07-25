@@ -1,7 +1,8 @@
-def call(Closure body) {
-    node('mysvn') {
-        body()
-    }
+def call(Map config) {
+	if(config.?test)
+	{
+		test(config.test.value)
+	}
 }
 
 def test(message){
