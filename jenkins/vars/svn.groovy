@@ -3,7 +3,7 @@ def call(name) {
 	test(name)
 }*/
 def call(Closure body) {
-    node('svn') {
+    node('mysvn') {
         body()
     }
 }
