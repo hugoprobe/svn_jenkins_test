@@ -1,3 +1,13 @@
+
+def call(String name = 'human') {
+
+    test(name)
+}
+
+def test(message){
+	echo "[util.test]: $message"
+}
+
 def isNeedCheckout(String svn_url){
     def _isNeedCheckout=false, current_svn_url=""
     def CURRENT_SVN_URL_SCRIPT  = ''' @echo off   
