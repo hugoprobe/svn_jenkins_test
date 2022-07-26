@@ -1,6 +1,3 @@
-def test(message){
-	echo "[util.test]: $message"
-}
 def mkdir(String path) {
         bat """	@echo off 
 		echo [util.mkdir] "${path}"
@@ -17,37 +14,6 @@ def deepmkdir(String path)
                 deepmkdir(parentDir)
         }
         mkdir(path)
-}
-
-def mklink(type, String link, String target){	
-	bat """ @echo off
-		echo [util.mklink] /$type $link $target
-		IF EXIST $link rmdir $link		
-              	mklink /$type $link $target """
-}
-
-def delete(String path, String options="")
-{	
-	bat """ @echo off		
-		echo [util.delete] "${path}"
-		if exist "${path}"\\* (
-		    rd   """ + (options?:'/Q /S') + """ "${path}" 		    
-		) else if exist "${path}" (
-		    del  """ + (options?:'/Q /F /S') + """ "${path}" 
-		) else (
-		    echo [util.delete] Failed to delete, path NOT FOUND: "${path}"
-		)"""
-}
-
-def isExist (str_path) {
-	return bat(script:'@echo off && if exist "'+str_path+'" (echo true) else echo false', returnStdout:true).trim()=="true"
-}
-
-def rename(String ori_path, String renamed_target)
-{
-	bat """	@echo off 
-		echo [util.rename] "${ori_path}" into "${renamed_target}"
-		ren "${ori_path}" "${renamed_target}" """	
 }
 
 def copy(srcs, String dst, String opt='')
