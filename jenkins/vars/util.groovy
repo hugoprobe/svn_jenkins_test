@@ -71,10 +71,10 @@ def copy(srcs, String dst, String opt='')
 			    call :copypath %%i
 			) 
 			goto :eof''' +assembleScript	
-		echo "Copy many"
+		// echo "Copy many"
 	}else{
 		assembleScript= """@echo off && call :copypath ${srcs}"""+assembleScript
-		echo "Copy one"
+		// echo "Copy one"
 	}
 	return  bat (assembleScript+":eof")
 }
