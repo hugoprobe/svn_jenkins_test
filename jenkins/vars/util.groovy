@@ -67,7 +67,7 @@ def getBatchEnv(String strScript, String vars)
 {
     def result=[]
     printedKeys="%"+vars.replace(',' , "%:%")+"%:null"    
-    def printedScript  = ''' 
+    def printedScript  = ''' @echo off
                          ''' + strScript + '''
                             echo ''' + printedKeys    
     def values 	= (bat(script:printedScript, returnStdout:true)).trim().split(":")  
