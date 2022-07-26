@@ -65,7 +65,7 @@ def copy(srcs, String dst, String opt='')
 		exit /b 0
 	"""
 	if((srcs instanceof Collection) || (srcs instanceof String[])){
-		assembleScript=	''' rem @echo off
+		assembleScript=	''' @echo off
 			setlocal enabledelayedexpansion
 			for  %%i in ("'''+ srcs.join('" "')+'''") do (     
 			    call :copypath %%i
