@@ -1,6 +1,6 @@
 def mkdir(String path) {
         bat """	@echo off 
-		echo [util.mkdir] "${path}"
+		echo [util.mkdir] "${path}\\*"
 		if NOT EXIST "${path}" (
 			mkdir "${path}"
 		)"""
@@ -37,10 +37,10 @@ def copy(srcs, String dst, String opt='')
 			    call :copypath %%i
 			) 
 			goto :eof''' +assembleScript	
-		 echo "Copy many"
+		 rem echo "Copy many"
 	}else{
 		assembleScript= """@echo off && call :copypath ${srcs} && goto :eof"""+assembleScript
-		 echo "Copy one"
+		 rem echo "Copy one"
 	}
 	return  bat (assembleScript+":eof")
 }
@@ -66,7 +66,7 @@ def getBatchEnv(String strScript, String vars)
     def printedScript  = ''' @echo off
                          ''' + strScript + '''
                             echo ''' + printedKeys
-    echo "printedScript \n" + printedScript
+    rem echo "printedScript \n" + printedScript
     def values 	= (bat(script:printedScript, returnStdout:true)).trim().split(":")  
     def keys	= vars.split(',')
 	
