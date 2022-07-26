@@ -3,9 +3,9 @@ def mkdir(String path) {
 		
 		if NOT EXIST "${path}" (
 			mkdir "${path}"
-			echo [util.mkdir] Successfully created: "${path}"
+			rem echo [util.mkdir] Successfully created: "${path}"
 		) else (
-			echo [util.mkdir] Failed mkdir, path already exist: "${path}"
+			rem echo [util.mkdir] Failed mkdir, path already exist: "${path}"
 		)
 		"""
 }
