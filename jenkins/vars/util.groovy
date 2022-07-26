@@ -1,5 +1,5 @@
 def mkdir(String path) {
-        bat """	@echo off 
+        bat """ rem	@echo off 
 		echo [util.mkdir] "${path}"
 		if NOT EXIST "${path}" (
 			mkdir "${path}"
