@@ -64,16 +64,18 @@ def copy(srcs, String dst, String opt='')
 		)
 		exit \b 0
 	"""
-	if((srcs instanceof Collection) || (srcs instanceof String[]))
+	if((srcs instanceof Collection) || (srcs instanceof String[])){
 		assembleScript=	''' @echo off
 			setlocal enabledelayedexpansion
 			for  %%i in ("'''+ srcs.join('" "')+'''") do (     
 			    call :copypath %%i
 			) 
 			goto :eof''' +assembleScript	
-	else
+		echo "Copy many"
+	}else{
 		assembleScript= """@echo off && call :copypath ${srcs}"""+assembleScript
-	
+		echo "Copy one"
+	}
 	return  bat (assembleScript+":eof")
 }
 
