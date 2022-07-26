@@ -1,11 +1,11 @@
 def mkdir(String path) {
-        bat """ rem	@echo off 
+        bat """ @echo off 
 		
 		if NOT EXIST "${path}" (
 			mkdir "${path}"
-			rem echo [util.mkdir] Successfully created: "${path}"
+			echo [util.mkdir] Successfully created: "${path}"
 		) else (
-			rem echo [util.mkdir] Failed mkdir, path already exist: "${path}"
+			echo [util.mkdir] Failed, path already exist: "${path}"
 		)
 		"""
 }
@@ -41,10 +41,10 @@ def copy(srcs, String dst, String opt='')
 			    call :copypath %%i
 			) 
 			goto :eof''' +assembleScript	
-		 rem echo "Copy many"
+		 //echo "Copy many"
 	}else{
 		assembleScript= """@echo off && call :copypath ${srcs} && goto :eof"""+assembleScript
-		 rem echo "Copy one"
+		 // echo "Copy one"
 	}
 	return  bat (assembleScript+":eof")
 }
