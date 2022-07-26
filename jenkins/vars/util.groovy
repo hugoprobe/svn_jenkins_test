@@ -73,7 +73,7 @@ def copy(srcs, String dst, String opt='')
 			goto :eof''' +assembleScript	
 		 echo "Copy many"
 	}else{
-		assembleScript= """@echo off && call :copypath ${srcs}"""+assembleScript
+		assembleScript= """@echo off && call :copypath ${srcs} && goto :eof"""+assembleScript
 		 echo "Copy one"
 	}
 	return  bat (assembleScript+":eof")
