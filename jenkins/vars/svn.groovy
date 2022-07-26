@@ -1,18 +1,3 @@
-/*
-def call(name) {
-	test(name)
-}*/
-def call(Map config) {
-	if(config?.test)
-	{
-		test(config.test.value)
-	}
-}
-
-def test(message){
-	echo "[util2.test]: $message"
-}
-
 def isNeedCheckout(String svn_url){
     def _isNeedCheckout=false, current_svn_url=""
     def CURRENT_SVN_URL_SCRIPT  = ''' @echo off   
