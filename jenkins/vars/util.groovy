@@ -1,9 +1,13 @@
 def mkdir(String path) {
         bat """ rem	@echo off 
-		echo [util.mkdir] "${path}"
+		
 		if NOT EXIST "${path}" (
 			mkdir "${path}"
-		)"""
+			echo [util.mkdir] Successfully created: "${path}"
+		) else (
+			echo [util.mkdir] Failed mkdir, path already exist: "${path}"
+		)
+		"""
 }
 
 def deepmkdir(String path)
