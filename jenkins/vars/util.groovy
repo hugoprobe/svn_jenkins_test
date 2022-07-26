@@ -62,7 +62,7 @@ def copy(srcs, String dst, String opt='')
 		) else (
 		    echo [util.copy] Failed to copy, source NOT FOUND: %1		    
 		)
-		exit \b 0
+		exit /b 0
 	"""
 	if((srcs instanceof Collection) || (srcs instanceof String[])){
 		assembleScript=	''' rem @echo off
