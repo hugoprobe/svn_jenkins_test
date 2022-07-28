@@ -28,7 +28,7 @@ def activeChoiceReactiveReference(Map it){
     return [  $class: 'DynamicReferenceParameter', 
               name: (it.name),  
               choiceType: (it.type), 
-              omitValueField:(it?.omit?:true), 
+              omitValueField:(it?.omit?:false), 
               description:(it?.desc?:''), 
               referencedParameters:(it?.references?:''),
               script: [ $class: 'GroovyScript', 
