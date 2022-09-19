@@ -50,7 +50,8 @@ def checkout(String svn_url){
 
 def update(revision="head"){
     withCredentials([usernamePassword(credentialsId: 'BUILD_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {          
-        bat """svn update --set-depth infinity --username "$USERNAME" --password "$PASSWORD" """
+        //bat """svn update --set-depth infinity --username "$USERNAME" --password "$PASSWORD" """
+	    bat(script:'svn update --set-depth infinity --username ${USERNAME} --password ${PASSWORD}')
     }
 }
 
