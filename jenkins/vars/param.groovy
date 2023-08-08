@@ -19,7 +19,7 @@ def activeChoiceReactive(Map it){
               referencedParameters:(it?.references?:''),
               script: [ $class: 'GroovyScript', 
                         script: (setStrScript(it.script)), 
-                        fallbackScript:(setStrScript('return "error script"'))
+                        fallbackScript:(setStrScript('return ["error script"]'))
                       ]
            ]
 }
