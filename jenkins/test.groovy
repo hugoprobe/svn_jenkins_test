@@ -14,6 +14,7 @@ pipeline {
                 script{
                     echo "here 1"
                     SCM_URL= String.valueOf(scm.getUserRemoteConfigs()[0].getUrl())
+                    SCM_Branch = String.valueOf(scm.branches[0].name)
                     echo "here 2"
                     echo "SCM_URL = ${SCM_URL}"
                     libPath='jenkins'
