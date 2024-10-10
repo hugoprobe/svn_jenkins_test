@@ -13,6 +13,7 @@ pipeline {
             steps{
                 script{                    
                     SCM_URL= String.valueOf(scm.locations.first().remote)
+                    echo "SCM_URL = ${SCM_URL}"
                     libPath='jenkins'
                     library identifier: 'common@', retriever: modernSCM(scm: [$class: 'GitSCMSource', credentialsId: 'BUILD_USER', remote: (SCM_URL), traits: [sparseCheckoutPaths([sparseCheckoutPaths: [[path: (libPath)]]])]], libraryPath: ("${libPath}/"))
                 }
