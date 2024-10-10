@@ -17,7 +17,8 @@ pipeline {
                     echo "here 2"
                     echo "SCM_URL = ${SCM_URL}"
                     libPath='jenkins'
-                    library identifier: 'common@', retriever: modernSCM(scm: [$class: 'GitSCMSource', credentialsId: 'BUILD_USER', remote: (SCM_URL), traits: [sparseCheckoutPaths([sparseCheckoutPaths: [[path: (libPath)]]])]], libraryPath: ("${libPath}/"))
+                    //library identifier: 'common@', retriever: modernSCM(scm: [$class: 'GitSCMSource', credentialsId: 'BUILD_USER', remote: (SCM_URL), traits: [sparseCheckoutPaths([sparseCheckoutPaths: [[path: (libPath)]]])]], libraryPath: ("${libPath}/"))
+                    library identifier: 'common@', retriever: legacySCM(libraryPath: (libPath), scm: scmGit(branches: [[name: 'refs/heads/branch_test']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: (libPath) ]]]], userRemoteConfigs: [[credentialsId: 'BUILD_USER', url: (SCM_URL)]]))
                 }
             }
         }
