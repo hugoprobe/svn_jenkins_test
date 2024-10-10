@@ -11,8 +11,10 @@ pipeline {
         stage("Load-Library")
         {
             steps{
-                script{                    
+                script{
+                    echo "here 1"
                     SCM_URL= String.valueOf(scm.locations.first().remote)
+                    echo "here 2"
                     echo "SCM_URL = ${SCM_URL}"
                     libPath='jenkins'
                     library identifier: 'common@', retriever: modernSCM(scm: [$class: 'GitSCMSource', credentialsId: 'BUILD_USER', remote: (SCM_URL), traits: [sparseCheckoutPaths([sparseCheckoutPaths: [[path: (libPath)]]])]], libraryPath: ("${libPath}/"))
