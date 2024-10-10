@@ -19,7 +19,7 @@ pipeline {
                     echo "SCM_URL = ${SCM_URL}"
                     libPath='jenkins'
                     //library identifier: 'common@', retriever: modernSCM(scm: [$class: 'GitSCMSource', credentialsId: 'BUILD_USER', remote: (SCM_URL), traits: [sparseCheckoutPaths([sparseCheckoutPaths: [[path: (libPath)]]])]], libraryPath: ("${libPath}/"))
-                    library identifier: 'common@', retriever: legacySCM(libraryPath: (libPath), scm: scmGit(branches: [[name: 'refs/heads/branch_test']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: (libPath) ]]]], userRemoteConfigs: [[credentialsId: 'BUILD_USER', url: (SCM_URL)]]))
+                    library identifier: 'common@', retriever: legacySCM(libraryPath: (libPath), scm: scmGit(branches: [[name: (SCM_Branch)]], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: (libPath) ]]]], userRemoteConfigs: [[credentialsId: 'BUILD_USER', url: (SCM_URL)]]))
                 }
             }
         }
@@ -118,25 +118,7 @@ pipeline {
                                     stage("Preparing $Variant")
                                     {
                                         
-                                        def scm_info = checkout scm
-                                        echo "scm info : ${scm_info.SVN_URL}"
-                                      
-                                      /*
-                                        SVN_URL=SVN_LIB_URL
-                                        if(svn.isNeedCheckout(SVN_URL)){
-                                            stage("Checkout"){
-                                                svn.checkout(SVN_URL)
-                                            }
-                                        } else {
-                                            stage("Clean"){
-                                                bat "_RevertAllExternals.bat"
-                                                svn.cleanupWithTortoise()
-                                            }
-                                        }
-
-                                        stage("Update"){
-                                            svn.update(params.SVN_Revision)
-                                        }*/
+                                   
                                     }
 
                                 if(params.BuildFlow.contains("ApplyPatches"))
