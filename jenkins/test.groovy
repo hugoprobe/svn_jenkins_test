@@ -11,10 +11,10 @@ pipeline {
         stage("Load-Library")
         {
             steps{
-                script{
-                    //env.SVN_URL= String.valueOf(scm.locations.first().remote)
-                    SVN_LIB_URL='https://github.com/hugoprobe/svn_jenkins_test/trunk/jenkins'
-                    library identifier: "common@", retriever: modernSCM(scm: [$class: 'SubversionSCMSource', credentialsId: '4eaa4918-7fd4-4338-becd-3c76a30aeed9', remoteBase: (SVN_LIB_URL), workspaceUpdater: [$class: 'CheckoutUpdater']]) 
+                script{                    
+                    SCM_URL= String.valueOf(scm.locations.first().remote)
+                    libPath='jenkins'
+                    library identifier: 'common@', retriever: modernSCM(scm: [$class: 'GitSCMSource', credentialsId: 'BUILD_USER', remote: (SCM_URL), traits: [sparseCheckoutPaths([sparseCheckoutPaths: [[path: (libPath)]]])]], libraryPath: ("${libPath}/"))
                 }
             }
         }
