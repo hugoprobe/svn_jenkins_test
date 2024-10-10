@@ -113,8 +113,7 @@ pipeline {
                                     stage("Preparing $Variant")
                                     {
                                         
-                                        def scm_info = checkout scm
-                                        echo "scm info : ${scm_info.SVN_URL}"
+                                       echo "Test"
                                       
                                       /*
                                         SVN_URL=SVN_LIB_URL
