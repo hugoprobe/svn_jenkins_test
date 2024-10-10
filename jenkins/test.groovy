@@ -40,9 +40,9 @@ pipeline {
                         parameters([
                             param.activeChoice                  ([  name:("BuildEnvironment"), type:'PT_RADIO', script:'''return ['DailyBuild:selected', 'QA-Release']''', desc:'Please choose your preferred build. It will automatically configures some parameters below.']),
                             param.activeChoice                  ([  name:("BuildVariant"), type:'PT_CHECKBOX', script:'''return ['ETC:selected', 'ASTC:selected', 'FBCL:selected']''']),
-                            param.activeChoiceReactiveReference ([  name:("Node_ETC") , type:'ET_FORMATTED_HTML', script:getNodeHTML('JOGBLD0020',$/D:\\Project\\DMK\\etc/$ )]),
-                            param.activeChoiceReactiveReference ([  name:("Node_ASTC"), type:'ET_FORMATTED_HTML', script:getNodeHTML('JOGBLD0021',$/D:\\Project\\DMK\\astc/$)]),
-                            param.activeChoiceReactiveReference ([  name:("Node_FBCL"), type:'ET_FORMATTED_HTML', script:getNodeHTML('JOGBLD0010',$/D:\\Project\\DMK\\etc/$)]),
+                            param.activeChoiceReactiveReference ([  name:("Node_ETC") , type:'ET_FORMATTED_HTML', script:getNodeHTML('JOGBLD0012',$/C:\\Project\\DMK\\etc/$ )]),
+                            param.activeChoiceReactiveReference ([  name:("Node_ASTC"), type:'ET_FORMATTED_HTML', script:getNodeHTML('JOGBLD0032',$/D:\\Project\\DMK\\astc/$)]),
+                            
                             param.activeChoiceReactive          ([  name:("BuildFlow"), type:'PT_CHECKBOX', references:'BuildEnvironment', 
                                                                     script:'''  
                                                                                 def OrderedFlow=['CleanUpdate', 'ApplyPatches', 'MakeData','PackData','Backup','Publish','UploadCrashlytics'].collectEntries{[it, ":selected"]}
@@ -64,7 +64,7 @@ pipeline {
         {
             steps {
                 script{
-                    ['ETC','ASTC','FBCL'].each{ var-> def label=null, workdir=null
+                    ['ETC','ASTC'].each{ var-> def label=null, workdir=null
                         if(params.BuildVariant.contains(var)){
                             try{
                                 label   = params["Node_${var}"].split(",")[0]  
@@ -104,7 +104,7 @@ pipeline {
                 axes {
                     axis {
                         name 'Variant'
-                        values 'ETC', 'FBCL', 'ASTC'
+                        values 'ETC', 'ASTC'
                     }
                 }
                 
@@ -114,21 +114,7 @@ pipeline {
                         steps{ 
                             script{
                                 
-                                if(params.BuildFlow.contains("CleanUpdate"))
-                                    stage("Preparing $Variant")
-                                    {
-                                        
-                                   
-                                    }
-
-                                if(params.BuildFlow.contains("ApplyPatches"))
-                                    stage("ApplyPatches") 
-                                    {
-
-                                            echo "deploy $Variant" 
-                                            echo "Waiting for 5 seconds"
-
-                                    }
+                                    "
                                     
                                 
                             }
