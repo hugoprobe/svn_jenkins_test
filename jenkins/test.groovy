@@ -6,13 +6,13 @@ pipeline {
     environment{
         ELIGIBLE_NODES          ='JOGBLD0006,JOGBLD0010,JOGBLD0020,JOGBLD0021'
         PUBLISH_DIRECTORIES ='A,B'
+        SCM_URL = "${String.valueOf(scm.locations.first().remote)}"
     }
     stages {
         stage("Load-Library")
         {
             steps{
-                script{                    
-                    SCM_URL= String.valueOf(scm.locations.first().remote)
+                script{                                        
                     libPath='jenkins'
                     library identifier: 'common@', retriever: modernSCM(scm: [$class: 'GitSCMSource', credentialsId: 'BUILD_USER', remote: (SCM_URL), traits: [sparseCheckoutPaths([sparseCheckoutPaths: [[path: (libPath)]]])]], libraryPath: ("${libPath}/"))
                 }
@@ -59,26 +59,7 @@ pipeline {
         {
             steps {
                 script{
-                    ['ETC','ASTC','FBCL'].each{ var-> def label=null, workdir=null
-                        if(params.BuildVariant.contains(var)){
-                            try{
-                                label   = params["Node_${var}"].split(",")[0]  
-                                workdir = params["Node_${var}"].split(",")[1]
-                            }catch(Exception e){
-                                //echo "Error:"
-                                echo "label: $label"
-                                echo "workdir: $workdir"
-                            }
-                                /*      
-                            node(label){
-                                if(!workdir || workdir=="")
-                                    error("Node_${var} workdir CANNOT BE NULL. Stopping the build early...")
-                              util.mkdir(workdir)
-                            }*/
-                        }
-                        NODES[var]   = [ label:(label), workdir:(workdir)]
-                        
-                    }
+                    echo "SCM_URL = $SCM_URL"
                 }
                 
             }
