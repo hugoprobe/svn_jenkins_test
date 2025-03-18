@@ -6,7 +6,7 @@ pipeline {
     environment{
         ELIGIBLE_NODES          ='JOGBLD0006,JOGBLD0010,JOGBLD0020,JOGBLD0021'
         PUBLISH_DIRECTORIES ='A,B'
-        SCM_URL = "${String.valueOf(scm.locations.first().remote)}"
+        SCM_URL = "${String.valueOf(scm.getUserRemoteConfigs()[0].getUrl())}"
     }
     stages {
         stage("Load-Library")
