@@ -2,11 +2,12 @@
 NODES=[:]
 
 pipeline {
-    agent
+    agent{
         node {
             label            "JOGBLD0012"
             customWorkspace  "C:\\Projects\\DMK\\etc"
         }
+    }
     environment{
         ELIGIBLE_NODES          ='JOGBLD0006,JOGBLD0010,JOGBLD0020,JOGBLD0021'
         PUBLISH_DIRECTORIES     ='A,B'
