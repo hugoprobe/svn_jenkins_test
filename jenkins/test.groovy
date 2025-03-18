@@ -12,7 +12,7 @@ pipeline {
         {
             steps{
                 script{
-                    echo "here 1"
+                    echo "here 77777777777777777777777777777777777777777777777"
                     SCM_URL= String.valueOf(scm.getUserRemoteConfigs()[0].getUrl())
                     SCM_Branch = String.valueOf(scm.branches[0].name)
                     echo "SCM_Branch = ${SCM_Branch}"
