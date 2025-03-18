@@ -14,8 +14,8 @@ pipeline {
         {
             steps {
                 script{
-                    echo "SCM_URL ___test2_ = $SCM_URL"
-                    echo "GIT_BRANCH ___test2_ = $GIT_BRANCH" 
+                    bat "echo SCM_URL ___test2_ = $SCM_URL"
+                    bat "echo GIT_BRANCH ___test2_ = $GIT_BRANCH" 
                 }
                 
             }
