@@ -14,8 +14,8 @@ pipeline {
         {
             steps {
                 script{
-                    echo "SCM_URL = $SCM_URL"
-                    echo "GIT_BRANCH = $GIT_BRANCH" 
+                    echo "SCM_URL = $SCM_URL   --> ${params.SVN_Revision}"
+                    echo "GIT_BRANCH = $GIT_BRANCH --> ${params.SVN_Revision}" 
                 }
                 
             }
