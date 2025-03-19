@@ -1,4 +1,5 @@
-myParams = [:]
+@groovy.transform.Field
+def myParams = [:]
 
 def getParam(String name){
     return this.myParams[name]?:'';
