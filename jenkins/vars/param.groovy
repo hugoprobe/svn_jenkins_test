@@ -54,7 +54,7 @@ def activeChoiceReactiveReference(Map it){
 
 @NonCPS
 def getAgentsTableScriptHTML(Agents, ELIGIBLE_AGENTS){ 
-    def html_node_options   = {default_label-> """<select name="value" >""" + ([default_label]+ ( (env.ELIGIBLE_AGENTS.tokenize('||').collect { it.trim() }) - default_label)).collect{ item -> return "<option value=$item>$item "}.join(' ') + "</select>"}
+    def html_node_options   = {default_label-> """<select name="value" >""" + ([default_label]+ ( (ELIGIBLE_AGENTS.tokenize('||').collect { it.trim() }) - default_label)).collect{ item -> return "<option value=$item>$item "}.join(' ') + "</select>"}
     def html_workdir        = {default_workdir-> """<input type="text" name="value" style="width:100%" value="${default_workdir}" >"""}
     def html_table_title    = tr(th("") + th("NodeLabel") + th("WorkingDirectory",'style="width:75%"'))
     def html_table_rows     = ""
