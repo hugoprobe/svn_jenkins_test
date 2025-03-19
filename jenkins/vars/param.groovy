@@ -1,3 +1,13 @@
+def myParams = [:]
+
+def get(){
+    return myParams;
+}
+
+def set(String name, String value){
+    myParam[name]=value
+}
+
 def activeChoice(Map it){
     def setStrScript={str-> return [classpath: [], sandbox: true, script:(str)]}
     return [  $class: 'ChoiceParameter', 
