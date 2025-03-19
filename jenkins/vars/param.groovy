@@ -1,6 +1,10 @@
+def getVal(){
+    return 'ABC'
+}
+
 
 def setParam(Map node){
-    node['1'] = 'A'
+    node['1'] = getVal()
 }
 
 def activeChoice(Map it){
