@@ -79,7 +79,7 @@ def traverseAgents(Map agents, String agentVariant, Closure closure) {
 
 @NonCPS
 def agentsTable(String paramName, Map Agents, String[] eligibleNodes, String flattenedAgentsParam=""){
-    def flattenedArray = flattenedAgentsParam.split(',')
+    def flattenedArray = flattenedAgentsParam?.split(',')?:[]
     def flattenedIdx = 0
     traverseAgents(Agents, "") { variants, _agent ->
         _agent.label      = (flattenedIdx>=flattenedArray.size())?:flattenedArray[flattenedIdx++]
