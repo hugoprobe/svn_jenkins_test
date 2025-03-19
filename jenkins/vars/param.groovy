@@ -32,7 +32,7 @@ def activeChoiceReactive(Map it){
                       ]
            ]
 }
-@NonCPS
+
 def activeChoiceReactiveReference(Map it){
     def setStrScript={str-> return [classpath: [], sandbox: true, script:(str)]}
     return [  $class: 'DynamicReferenceParameter', 
@@ -49,20 +49,8 @@ def activeChoiceReactiveReference(Map it){
 }
 
 
-// Function to traverse the map tree recursively
-@NonCPS
-def traverseAgents(Map agents, String agentVariant, Closure closure) {
-    agents.each { key, value ->
-        def newAgentVariant = agentVariant?"${agentVariant}.${key}":key
-        if ((value instanceof Map) && !(value.keySet().contains('label'))) {
-            traverseAgents(value, newAgentVariant, closure)
-        } else {            
-            closure(newAgentVariant, value)
-        }
-    }
-}
 
-@NonCPS
+
 def agentsTable(String paramName, Map Agents, String[] eligibleNodes, String flattenedAgentsParam=""){
     /*
     def flattenedArray = flattenedAgentsParam?.split(',')?:[]
