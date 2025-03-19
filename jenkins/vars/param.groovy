@@ -1,5 +1,4 @@
-@NonCPS
-def activeChoiceReactive(Map it){
-    def k=1
-    return k
+def isRemoteBranchExistR(String gitRemote, String branchName){
+	def error_status = bat(returnStatus:true, script: "git ls-remote --exit-code --heads ${gitRemote} ${branchName}")
+	return (error_status != 0)
 }
