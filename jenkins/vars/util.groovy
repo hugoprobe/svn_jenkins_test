@@ -116,12 +116,5 @@ def isRemoteBranchExist(String gitRemote, String branchName){
 }
 
 def saveParamToFile(Map params, String filePath){
-	def file = new File(filePath)
-	if (fileExists(filePath)) {
-		file.text = ''
-	}
-
-	params.each{ key, value ->
-		file.append("${key}=${value}\n")
-	}
+	writeFile file: filePath, text: params.collect { "${it.key}=${it.value}" }.join('\n')
 }
