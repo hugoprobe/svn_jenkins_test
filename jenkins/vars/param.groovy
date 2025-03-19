@@ -1,10 +1,10 @@
 def myParams = [:]
 
-def get(String name){
+def getParam(String name){
     return myParams[name]?:'';
 }
 
-def set(String name, String value){
+def setParam(String name, String value){
     myParams[name]=value
 }
 
@@ -47,3 +47,5 @@ def activeChoiceReactiveReference(Map it){
                       ]
            ]
 }
+
+return this
