@@ -24,10 +24,10 @@ def activeChoiceReactiveReference(Map it){
            ]
 }
 
-def table(str,arg=""){ return """<table $arg >$str\n</table>\n"""}
-def th(str, arg="") {return """<th $arg>$str</th>\n"""}
-def tr(str) {return "<tr>$str\n</tr>\n"} 
-def td(str) {return "<td>$str</td>\n"}
+@NonCPS def table(str,arg=""){ return """<table $arg >$str\n</table>\n"""}
+@NonCPS def th(str, arg="") {return """<th $arg>$str</th>\n"""}
+@NonCPS def tr(str) {return "<tr>$str\n</tr>\n"} 
+@NonCPS def td(str) {return "<td>$str</td>\n"}
 
 @NonCPS
 def getAgentsTableScriptHTML(Map Agents, List ELIGIBLE_AGENTS){ 
