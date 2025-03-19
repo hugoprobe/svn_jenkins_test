@@ -63,7 +63,7 @@ def traverseAgents(Map agents, String agentVariant, Closure closure) {
 }
 
 
-def agentsTable(String paramName){
+def agentsTable(String paramName, Map Agents, List eligibleNodes, String flattenedAgentsParam=""){
      return null
    // return activeChoiceReactiveReference ([  name:(paramName), type:'ET_FORMATTED_HTML',   script:'return """' +  getAgentsTableScriptHTML(Agents, eligibleNodes) + '"""'])
 }
