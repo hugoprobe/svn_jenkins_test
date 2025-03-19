@@ -1,4 +1,4 @@
-def agentsTable(Map it){
+def coba(Map it){
     return "Okay"
 }
 
