@@ -89,8 +89,8 @@ def agentsTable(String paramName, Map Agents, String[] eligibleNodes, String fla
         if(!(_agent?.workdir) )
             error("Workdir at Agent $_agent CANNOT BE NULL. Stopping the build early...")        
     }
-
-    return activeChoiceReactiveReference ([  name:(paramName), type:'ET_FORMATTED_HTML',   script:'return """' +  getAgentsTableScriptHTML(Agents, eligibleNodes) + '"""'])
+    return null
+   // return activeChoiceReactiveReference ([  name:(paramName), type:'ET_FORMATTED_HTML',   script:'return """' +  getAgentsTableScriptHTML(Agents, eligibleNodes) + '"""'])
 }
 
 
