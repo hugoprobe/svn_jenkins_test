@@ -29,7 +29,7 @@ def th(str, arg="") {return """<th $arg>$str</th>\n"""}
 def tr(str) {return "<tr>$str\n</tr>\n"} 
 def td(str) {return "<td>$str</td>\n"}
 
-
+@NonCPS
 def getAgentsTableScriptHTML(Map Agents, List ELIGIBLE_AGENTS){ 
     def html_node_options   = {default_label-> """<select name="value" >""" + ([default_label]+ ( (ELIGIBLE_AGENTS.collect { it.trim() }) - default_label)).collect{ item -> return "<option value=$item>$item "}.join(' ') + "</select>"}
     def html_workdir        = {default_workdir-> """<input type="text" name="value" style="width:100%" value="${default_workdir}" >"""}
