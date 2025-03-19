@@ -80,6 +80,7 @@ def traverseAgents(Map agents, String agentVariant, Closure closure) {
 
 @NonCPS
 def agentsTable(String paramName, Map Agents, String[] eligibleNodes, String flattenedAgentsParam=""){
+    /*
     def flattenedArray = flattenedAgentsParam?.split(',')?:[]
     def flattenedIdx = 0
     traverseAgents(Agents, "") { variants, _agent ->
@@ -88,7 +89,7 @@ def agentsTable(String paramName, Map Agents, String[] eligibleNodes, String fla
         //println "${variants}: label ${_agent.label} workdir: ${_agent.workdir}"
         if(!(_agent?.workdir) )
             error("Workdir at Agent $_agent CANNOT BE NULL. Stopping the build early...")        
-    }
+    }*/
     return null
    // return activeChoiceReactiveReference ([  name:(paramName), type:'ET_FORMATTED_HTML',   script:'return """' +  getAgentsTableScriptHTML(Agents, eligibleNodes) + '"""'])
 }
