@@ -16,8 +16,8 @@ def traverseAgents(Map agents, String agentVariant, Closure closure) {
 
 
 def agentsTable(Map it){	
-    def flattenedArray = it.flattenedAgentsParam.tokenize(',')
-    def max_idx = flattenedArray.size() - 1	
+    def flattenedArray = it.flattenedAgentsParam.split(',')
+    def max_idx = (it.flattenedAgentsParam.trim().isEmpty() ? 0 : flattenedArray.size())   -   1	
     def idx = 0
     traverseAgents(it.Agents, "") { variants, _agent ->
  	println "b ${variants}: label ${_agent.label} workdir: ${_agent.workdir} max_idx: $max_idx, idx: $idx"
