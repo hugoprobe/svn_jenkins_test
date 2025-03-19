@@ -1,5 +1,4 @@
-def coba(Map it){
-    return "Okay"
+def activeChoiceReactive(Map it){
+    def k=1
+    return k
 }
-
-
