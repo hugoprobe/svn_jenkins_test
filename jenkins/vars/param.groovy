@@ -45,13 +45,13 @@ def agentsTable(Map it){
     def flattenedArray = it.flattenedAgentsParam.split(',')
     def max_idx = (it.flattenedAgentsParam.trim().isEmpty() ? 0 : flattenedArray.size())   -   1	
     def idx = 0
-    traverseAgents(it.Agents, "") { variants, _agent ->
+    traverseAgents(it.agents, "") { variants, _agent ->
  	println "b ${variants}: label ${_agent.label} workdir: ${_agent.workdir} max_idx: $max_idx, idx: $idx"
         _agent.label      = (idx>max_idx)?_agent.label:flattenedArray[idx++]
         _agent.workdir    = (idx>max_idx)?_agent.workdir:flattenedArray[idx++]
         println "a ${variants}: label ${_agent.label} workdir: ${_agent.workdir}"
         if(!_agent.workdir || _agent.workdir?.trim().isEmpty())
-            error("Workdir at Agent $_agent CANNOT BE NULL. Stopping the build early...")        
+            error("Workdir at agent $_agent CANNOT BE NULL. Stopping the build early...")        
     }
-	return activeChoiceReactiveReference ([  name:(it.paramName), type:'ET_FORMATTED_HTML',   script:'return """' +  getAgentsTableScriptHTML(it.Agents, it.eligibleNodes) + '"""'])
+	return activeChoiceReactiveReference ([  name:(it.name), type:'ET_FORMATTED_HTML',   script:'return """' +  getAgentsTableScriptHTML(it.agents, it.eligibleNodes) + '"""'])
 }
