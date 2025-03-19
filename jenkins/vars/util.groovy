@@ -99,3 +99,18 @@ def getChangeString() {
 	return changeString
 }
 
+
+@NonCPS
+def validateGitUrlInWorkspace(String gitRemote, String gitUrlSCM){
+    def gitUrlWorkspace = bat(returnStdout:true, script: """  @echo off
+                                                        for /f %%u in ('git config --get remote.${gitRemote}.url') do echo %%u""" ).trim()
+    if(!gitUrlWorkspace.trim().equalsIgnoreCase(gitUrlSCM.trim())){
+        error("gitUrlSCM=$gitUrlSCM \n gitUrlWorkspace=$gitUrlWorkspace \n The git url on your workspace does not match the one in the SCM. Stopping the build early")
+    }
+}
+
+@NonCPS
+def isRemoteBranchExist(String gitRemote, String branchName){
+	def error_status = bat(returnStatus:true, script: "git ls-remote --exit-code --heads ${gitRemote} ${branchName}")
+	return (error_status != 0)
+}
