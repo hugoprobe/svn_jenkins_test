@@ -1,4 +1,4 @@
-def myParams = [:]
+myParams = [:]
 
 def getParam(String name){
     return myParams[name]?:'';
@@ -48,8 +48,4 @@ def activeChoiceReactiveReference(Map it){
            ]
 }
 
-return [
-    setParam: this.&setParam,
-    setParam: this.&getParam,
-    myParams: myParams
-]
+
