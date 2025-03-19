@@ -23,6 +23,7 @@ pipeline {
                 }
             }
         }
+        /*
         stage("Setup-Parameters")
         {
             steps {
@@ -74,12 +75,7 @@ pipeline {
                                 echo "label: $label"
                                 echo "workdir: $workdir"
                             }
-                                /*      
-                            node(label){
-                                if(!workdir || workdir=="")
-                                    error("Node_${var} workdir CANNOT BE NULL. Stopping the build early...")
-                              util.mkdir(workdir)
-                            }*/
+
                         }
                         NODES[var]   = [ label:(label), workdir:(workdir)]
                         
@@ -97,8 +93,8 @@ pipeline {
                 }              
                 agent {
                     node {
-                      label            /*NODES[Variant].label*/ params["Node_${Variant}"].split(",")[0] 
-                      customWorkspace  /*NODES[Variant].workdir*/ params["Node_${Variant}"].split(",")[1] 
+                      label            params["Node_${Variant}"].split(",")[0] 
+                      customWorkspace   params["Node_${Variant}"].split(",")[1] 
                     }
                 }
                 axes {
@@ -125,6 +121,6 @@ pipeline {
                 }
                 
             }
-        }
+        }*/
     }
 }
