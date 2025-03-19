@@ -65,6 +65,7 @@ def getAgentsTableScriptHTML(Agents, ELIGIBLE_AGENTS){
 }
 
 // Function to traverse the map tree recursively
+@NonCPS
 def traverseAgents(Map agents, String agentVariant, Closure closure) {
     agents.each { key, value ->
         def newAgentVariant = agentVariant?"${agentVariant}.${key}":key
@@ -76,6 +77,7 @@ def traverseAgents(Map agents, String agentVariant, Closure closure) {
     }
 }
 
+@NonCPS
 def agentsTable(String paramName, Map Agents, List eligibleNodes, String flattenedAgentsParam=""){
     def flattenedArray = flattenedAgentsParam.split(',')
     def flattenedIdx = 0
