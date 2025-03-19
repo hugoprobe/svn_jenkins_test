@@ -1,7 +1,7 @@
 def myParams = [:]
 
-def get(){
-    return myParams;
+def get(String name){
+    return myParams[name];
 }
 
 def set(String name, String value){
