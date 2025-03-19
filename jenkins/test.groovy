@@ -21,7 +21,7 @@ pipeline {
                     //library identifier: 'common@', retriever: modernSCM(scm: [$class: 'GitSCMSource', credentialsId: 'BUILD_USER', remote: (SCM_URL), traits: [sparseCheckoutPaths([sparseCheckoutPaths: [[path: (libPath)]]])]], libraryPath: ("${libPath}/"))
                     library identifier: 'common@', retriever: legacySCM(libraryPath: (libPath), scm: scmGit(branches: [[name: (SCM_Branch)]], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: (libPath) ]]]], userRemoteConfigs: [[credentialsId: 'BUILD_USER', url: (SCM_URL)]]))
 
-                    util.validateGitUrlInWorkspace("A", "B")
+                    util.isRemoteBranchExist("A", "B")
                 }
             }
         }
