@@ -16,7 +16,7 @@ def traverseAgents(Map agents, String agentVariant, Closure closure) {
 
 
 def agentsTable(Map it){	
-    def flattenedArray = it.flattenedAgentsParam.split(',')
+    def flattenedArray = it.flattenedAgentsParam.tokenize(',')
     def max_idx = flattenedArray.size() - 1	
     def idx = 0
     traverseAgents(it.Agents, "") { variants, _agent ->
