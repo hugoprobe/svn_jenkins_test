@@ -86,7 +86,7 @@ def agentsTable(String paramName, Map Agents, String[] eligibleNodes, String fla
     traverseAgents(Agents, "") { variants, _agent ->
         _agent.label      = (flattenedIdx>=flattenedArray.size())?:flattenedArray[flattenedIdx++]
         _agent.workdir    = (flattenedIdx>=flattenedArray.size())?:flattenedArray[flattenedIdx++]
-        bat "${variants}: label ${_agent.label} workdir: ${_agent.workdir}"
+        
         if(!(_agent?.workdir) )
             error("Workdir at Agent $_agent CANNOT BE NULL. Stopping the build early...")        
     }
