@@ -20,7 +20,7 @@ def agentsTable(Map it){
     def max_idx = flattenedArray.size() - 1	
     def idx = 0
     traverseAgents(it.Agents, "") { variants, _agent ->
- 	println "b ${variants}: label ${_agent.label} workdir: ${_agent.workdir}"
+ 	println "b ${variants}: label ${_agent.label} workdir: ${_agent.workdir} max_idx: $max_iox, idx: $idx"
         _agent.label      = (idx>max_idx)?_agent.label:flattenedArray[idx++]
         _agent.workdir    = (idx>max_idx)?_agent.workdir:flattenedArray[idx++]
         println "a ${variants}: label ${_agent.label} workdir: ${_agent.workdir}"
