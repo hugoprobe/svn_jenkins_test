@@ -117,7 +117,7 @@ def isRemoteBranchExist(String gitRemote, String branchName){
 
 def saveParamToFile(Map params, String filePath){
 	def file = new File(filePath)
-	if (file.exists()) {
+	if (fileExists(filePath)) {
 		file.text = ''
 	}
 
