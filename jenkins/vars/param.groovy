@@ -5,3 +5,6 @@ def isRemoteBranchExistR(String gitRemote, String branchName){
 def test(){
 	return true
 }
+def agentsTable(Map it){
+	return true
+}
