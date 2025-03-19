@@ -5,7 +5,7 @@ def get(String name){
 }
 
 def set(String name, String value){
-    myParam[name]=value
+    myParams[name]=value
 }
 
 def activeChoice(Map it){
