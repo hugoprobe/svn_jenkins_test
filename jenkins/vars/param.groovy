@@ -48,4 +48,8 @@ def activeChoiceReactiveReference(Map it){
            ]
 }
 
-return this
+return [
+    setParam: this.&setParam,
+    setParam: this.&getParam,
+    myParams: myParams
+]
