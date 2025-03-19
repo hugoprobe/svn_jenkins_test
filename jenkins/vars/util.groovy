@@ -100,7 +100,7 @@ def getChangeString() {
 }
 
 
-@NonCPS
+
 def validateGitUrlInWorkspace(String gitRemote, String gitUrlSCM){
     def gitUrlWorkspace = bat(returnStdout:true, script: """  @echo off
                                                         for /f %%u in ('git config --get remote.${gitRemote}.url') do echo %%u""" ).trim()
@@ -109,8 +109,19 @@ def validateGitUrlInWorkspace(String gitRemote, String gitUrlSCM){
     }
 }
 
-@NonCPS
+
 def isRemoteBranchExist(String gitRemote, String branchName){
 	def error_status = bat(returnStatus:true, script: "git ls-remote --exit-code --heads ${gitRemote} ${branchName}")
 	return (error_status != 0)
+}
+
+def saveParamToFile(Map params, String filePath){
+	def file = new File(filePath)
+	if (file.exists()) {
+		file.text = ''
+	}
+
+	params.each{ key, value ->
+		file.append("${key}=${value}\n")
+	}
 }
