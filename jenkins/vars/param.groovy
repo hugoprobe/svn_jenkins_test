@@ -1,12 +1,6 @@
-@groovy.transform.Field
-def myParams = [:]
 
-def getParam(String name){
-    return this.myParams[name]?:'';
-}
-
-def setParam(String name, String value){
-    this.myParams[name]=value
+def setParam(Map node){
+    node['1'] = 'A'
 }
 
 def activeChoice(Map it){
