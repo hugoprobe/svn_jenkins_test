@@ -17,11 +17,12 @@ def traverseAgents(Map agents, String agentVariant, Closure closure) {
 
 def agentsTable(Map it){	
     def flattenedArray = it.flattenedAgentsParam.split(',')
-    def flattenedIdx = 0
+    def max_idx = flattenedArray.size() - 1	
+    def idx = 0
     traverseAgents(it.Agents, "") { variants, _agent ->
  	println "b ${variants}: label ${_agent.label} workdir: ${_agent.workdir}"
-        _agent.label      = (flattenedIdx>=flattenedArray.size())?_agent.label:flattenedArray[flattenedIdx++]
-        _agent.workdir    = (flattenedIdx>=flattenedArray.size())?_agent.workdir:flattenedArray[flattenedIdx++]
+        _agent.label      = (idx>max_idx)?_agent.label:flattenedArray[idx++]
+        _agent.workdir    = (idx>max_idx)?_agent.workdir:flattenedArray[idx++]
         println "a ${variants}: label ${_agent.label} workdir: ${_agent.workdir}"
         if(!_agent.workdir || _agent.workdir?.trim().isEmpty())
             error("Workdir at Agent $_agent CANNOT BE NULL. Stopping the build early...")        
