@@ -32,6 +32,7 @@ def activeChoiceReactive(Map it){
                       ]
            ]
 }
+@NonCPS
 def activeChoiceReactiveReference(Map it){
     def setStrScript={str-> return [classpath: [], sandbox: true, script:(str)]}
     return [  $class: 'DynamicReferenceParameter', 
