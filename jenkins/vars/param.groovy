@@ -1,5 +1,5 @@
 def getVal(){
-    return 'ABC'
+    return params.Sleep
 }
 
 
