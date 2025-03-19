@@ -1,11 +1,11 @@
 myParams = [:]
 
 def getParam(String name){
-    return myParams[name]?:'';
+    return this.myParams[name]?:'';
 }
 
 def setParam(String name, String value){
-    myParams[name]=value
+    this.myParams[name]=value
 }
 
 def activeChoice(Map it){
