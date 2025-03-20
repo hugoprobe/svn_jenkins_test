@@ -42,11 +42,10 @@ def getAgentsTableScriptHTML(Map Agents, List ELIGIBLE_AGENTS){
 }
 
 def agentsTable(Map it){	
-    def flattenedArray = []
-    def max_idx = -1
+    def idx=0, max_idx=-1, flattenedArray = []
     if (params[it.name]){
 	flattenedArray = params[it.name].split(',')
-	max_idx = (params[it.name].trim().isEmpty() ? 0 : flattenedArray.size())   -   1
+	max_idx = params[it.name].trim().isEmpty() ? -1 : (flattenedArray.size() - 1)
     }
     traverseAgents(it.agents, "") { variants, _agent ->
  	println "bbb ${variants}: label ${_agent.label} workdir: ${_agent.workdir} max_idx: $max_idx, idx: $idx"
