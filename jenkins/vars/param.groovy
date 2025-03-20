@@ -46,10 +46,10 @@ def agentsTable(Map it){
     def max_idx = (params[it.name].trim().isEmpty() ? 0 : flattenedArray.size())   -   1	
     def idx = 0
     traverseAgents(it.agents, "") { variants, _agent ->
- 	println "b ${variants}: label ${_agent.label} workdir: ${_agent.workdir} max_idx: $max_idx, idx: $idx"
+ 	println "bbb ${variants}: label ${_agent.label} workdir: ${_agent.workdir} max_idx: $max_idx, idx: $idx"
         _agent.label      = (idx>max_idx)?_agent.label:flattenedArray[idx++]
         _agent.workdir    = (idx>max_idx)?_agent.workdir:flattenedArray[idx++]
-        println "a ${variants}: label ${_agent.label} workdir: ${_agent.workdir}"
+        println "aaa ${variants}: label ${_agent.label} workdir: ${_agent.workdir}"
         if(!_agent.workdir || _agent.workdir?.trim().isEmpty())
             error("Workdir at agent $_agent CANNOT BE NULL. Stopping the build early...")        
     }
